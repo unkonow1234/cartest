@@ -74,3 +74,15 @@ h1{
 .incorrect{
     color:blue;
 }
+
+#startButton{
+    font-size:30px;
+    padding:20px 40px;
+    cursor:pointer;
+}
+
+#mockButton{
+    font-size:30px;
+    padding:20px 40px;
+    cursor:pointer;
+}
