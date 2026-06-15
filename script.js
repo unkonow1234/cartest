@@ -443,31 +443,61 @@ let wrongQuestions = [];
 let currentMode = "practice";
 let wrongCount = 0;
 
-const MOCK_PASS_SCORE = 45; // ★これ必須
+let currentQuestionSet = [];
+
+const MOCK_PASS_SCORE = 45;
 
 const menu = document.getElementById("menu");
 const quizArea = document.getElementById("quizArea");
+
 const startButton = document.getElementById("startButton");
 const mockButton = document.getElementById("mockButton");
+const honStartButton = document.getElementById("honStartButton");
 
 const question = document.getElementById("question");
 const result = document.getElementById("result");
 const progress = document.getElementById("progress");
+
 const maruBtn = document.getElementById("maruBtn");
 const batuBtn = document.getElementById("batuBtn");
 
-/* イベント */
-startButton.addEventListener("click", () => startQuiz("practice"));
-mockButton.addEventListener("click", () => startQuiz("mock"));
+/* ボタンイベント */
+
+startButton.addEventListener("click", () => {
+
+    currentQuestionSet = questions;
+
+    startQuiz("practice");
+
+});
+
+mockButton.addEventListener("click", () => {
+
+    currentQuestionSet = questions;
+
+    startQuiz("mock");
+
+});
+
+honStartButton.addEventListener("click", () => {
+
+    currentQuestionSet = honQuestions;
+
+    startQuiz("practice");
+
+});
 
 maruBtn.addEventListener("click", () => checkAnswer(true));
 batuBtn.addEventListener("click", () => checkAnswer(false));
 
-/* 開始 */
+/* クイズ開始 */
+
 function startQuiz(mode){
 
-    if(!window.questions || questions.length === 0){
-        alert("questions.js が読み込まれていません");
+    if(!currentQuestionSet || currentQuestionSet.length === 0){
+
+        alert("問題データがありません");
+
         return;
     }
 
@@ -486,10 +516,10 @@ function startQuiz(mode){
 
     const count =
         (mode === "practice")
-        ? 10
-        : Math.min(50, questions.length);
+        ? Math.min(10, currentQuestionSet.length)
+        : Math.min(50, currentQuestionSet.length);
 
-    quizQuestions = [...questions]
+    quizQuestions = [...currentQuestionSet]
         .sort(() => Math.random() - 0.5)
         .slice(0, count);
 
@@ -497,19 +527,24 @@ function startQuiz(mode){
 }
 
 /* 問題表示 */
+
 function showQuestion(){
 
     isAnswered = false;
 
     progress.textContent =
-        "問題 " + (currentQuestion + 1) + " / " + quizQuestions.length;
+        "問題 " + (currentQuestion + 1) +
+        " / " + quizQuestions.length;
 
-    question.textContent = quizQuestions[currentQuestion].text;
+    question.textContent =
+    quizQuestions[currentQuestion].text ||
+    quizQuestions[currentQuestion].question;
 
     result.textContent = "";
 }
 
-/* 回答処理 */
+/* 回答判定 */
+
 function checkAnswer(userAnswer){
 
     if(isAnswered) return;
@@ -521,6 +556,7 @@ function checkAnswer(userAnswer){
     if(userAnswer === q.answer){
 
         correctCount++;
+
         result.textContent = "正解";
         result.className = "correct";
 
@@ -532,10 +568,13 @@ function checkAnswer(userAnswer){
         wrongQuestions.push(q);
 
         if(currentMode === "mock"){
+
             wrongCount++;
 
             if(wrongCount >= 6){
+
                 setTimeout(showResult, 500);
+
                 return;
             }
         }
@@ -546,19 +585,26 @@ function checkAnswer(userAnswer){
         currentQuestion++;
 
         if(currentQuestion < quizQuestions.length){
+
             showQuestion();
+
         }else{
+
             showResult();
+
         }
 
     }, 800);
 }
 
-/* 結果 */
+/* 結果表示 */
+
 function showResult(){
 
     const total = quizQuestions.length;
-    const percent = Math.round((correctCount / total) * 100);
+
+    const percent =
+        Math.round((correctCount / total) * 100);
 
     const isPass =
         (currentMode === "mock")
@@ -569,7 +615,9 @@ function showResult(){
 
     let html =
         "<h2>クイズ終了！</h2>" +
-        "<h1 style='color:" + (isPass ? "red" : "blue") + "'>" +
+        "<h1 style='color:" +
+        (isPass ? "red" : "blue") +
+        "'>" +
         (isPass ? "合格" : "不合格") +
         "</h1>" +
         "<p>正解数：" + correctCount + "</p>" +
@@ -578,23 +626,32 @@ function showResult(){
 
     if(wrongQuestions.length > 0){
 
-        html += "<h3>間違えた問題</h3><ul>";
+        html += "<h3>間違えた問題</h3><ul class='wrong-list'>";
 
         wrongQuestions.forEach(q => {
-            html += "<li>" + q.text + "（正解：" + (q.answer ? "〇" : "✕") + "）</li>";
-        });
+
+    html +=
+        "<li>" +
+        (q.text || q.question) +
+        "（正解は" +
+        (q.answer ? "〇" : "✕") +
+        "）</li>";
+
+});
 
         html += "</ul>";
     }
 
-    html += "<br><button onclick='goHome()'>ホームへ戻る</button>";
+    html +=
+        "<br><button onclick='goHome()'>ホームへ戻る</button>";
 
     question.innerHTML = html;
 
     document.querySelector(".answer-buttons").style.display = "none";
 }
 
-/* ホーム */
+/* ホームへ戻る */
+
 function goHome(){
 
     quizArea.style.display = "none";
@@ -603,6 +660,7 @@ function goHome(){
     currentQuestion = 0;
     correctCount = 0;
     wrongCount = 0;
+
     wrongQuestions = [];
 
     progress.textContent = "";
