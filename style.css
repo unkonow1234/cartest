@@ -136,3 +136,41 @@ footer a:hover{
     text-align:center;
     margin:30px 0;
 }
+
+@media screen and (max-width: 768px){
+
+    h1{
+        font-size:28px;
+    }
+
+    #question{
+        font-size:22px;
+        padding:25px;
+    }
+
+    #menu button{
+        width:90%;
+        height:80px;
+        font-size:24px;
+    }
+
+    .answer-buttons{
+        gap:15px;
+    }
+
+    .answer-btn{
+        width:45%;
+        height:100px;
+        font-size:50px;
+    }
+
+    #result{
+        font-size:40px;
+    }
+
+}
+
+#question{
+    word-break: break-word;
+    line-height: 1.8;
+}
