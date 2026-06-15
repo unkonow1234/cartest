@@ -2,37 +2,74 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>普通免許学科練習サイト</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>普通免許　学科試験　練習サイト</h1>
+    <h1>普通免許　学科試験　練習サイト</h1>
 
-<div id="menu">
-    <button id="startButton">仮免学科　練習</button>
-    <br><br>
+    <div id="menu">
 
-    <button id="mockButton">仮免学科　模擬試験</button>
-    <br><br>
+        <button id="startButton">
+            仮免学科　練習
+        </button>
 
-    <button id="honStartButton">本免学科　練習</button>
-</div>
+        <button id="mockButton">
+            仮免学科　模擬試験
+        </button>
 
-<div id="quizArea">
-    <div id="progress"></div>
+        <button id="honStartButton">
+            普通本免　練習
+        </button>
 
-    <div id="question"></div>
+        <button id="honMockButton">
+            本免学科　模擬試験
+        </button>
 
-    <div class="answer-buttons">
-        <button class="answer-btn maru" id="maruBtn">〇</button>
-        <button class="answer-btn batu" id="batuBtn">✕</button>
     </div>
 
-    <div id="result"></div>
-</div>
+    <div id="quizArea" style="display:none;">
 
-<script src="questions2.js"></script>
+        <div id="progress"></div>
+
+        <div id="question"></div>
+
+        <div class="answer-buttons">
+
+            <button
+                class="answer-btn maru"
+                id="maruBtn">
+                〇
+            </button>
+
+            <button
+                class="answer-btn batu"
+                id="batuBtn">
+                ✕
+            </button>
+
+        </div>
+
+        <div id="result"></div>
+
+    </div>
+<footer>
+
+    <a href="contact.html">お問い合わせ</a>
+
+    <span>｜</span>
+
+    <a href="terms.html">利用規約</a>
+
+    <span>｜</span>
+
+    <a href="privacy.html">プライバシーポリシー</a>
+
+</footer>
+
+<script src="questions.js"></script>
 <script src="questions2.js"></script>
 <script src="script.js"></script>
 
