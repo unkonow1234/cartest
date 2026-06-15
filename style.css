@@ -10,7 +10,7 @@ h1{
     margin-bottom:30px;
 }
 
-#startButton{
+#menu button{
     font-size:30px;
     padding:20px 40px;
     cursor:pointer;
@@ -75,14 +75,7 @@ h1{
     color:blue;
 }
 
-#startButton{
-    font-size:30px;
-    padding:20px 40px;
-    cursor:pointer;
-}
-
-#mockButton{
-    font-size:30px;
-    padding:20px 40px;
-    cursor:pointer;
+.wrong-list li{
+    margin-bottom:20px;
+    line-height:1.6;
 }
