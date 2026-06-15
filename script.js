@@ -453,6 +453,7 @@ const quizArea = document.getElementById("quizArea");
 const startButton = document.getElementById("startButton");
 const mockButton = document.getElementById("mockButton");
 const honStartButton = document.getElementById("honStartButton");
+const honMockButton = document.getElementById("honMockButton");
 
 const question = document.getElementById("question");
 const result = document.getElementById("result");
@@ -466,7 +467,6 @@ const batuBtn = document.getElementById("batuBtn");
 startButton.addEventListener("click", () => {
 
     currentQuestionSet = questions;
-
     startQuiz("practice");
 
 });
@@ -474,7 +474,6 @@ startButton.addEventListener("click", () => {
 mockButton.addEventListener("click", () => {
 
     currentQuestionSet = questions;
-
     startQuiz("mock");
 
 });
@@ -482,8 +481,14 @@ mockButton.addEventListener("click", () => {
 honStartButton.addEventListener("click", () => {
 
     currentQuestionSet = honQuestions;
-
     startQuiz("practice");
+
+});
+
+honMockButton.addEventListener("click", () => {
+
+    currentQuestionSet = honQuestions;
+    startQuiz("honMock");
 
 });
 
@@ -497,8 +502,8 @@ function startQuiz(mode){
     if(!currentQuestionSet || currentQuestionSet.length === 0){
 
         alert("問題データがありません");
-
         return;
+
     }
 
     currentMode = mode;
@@ -514,10 +519,21 @@ function startQuiz(mode){
 
     document.querySelector(".answer-buttons").style.display = "flex";
 
-    const count =
-        (mode === "practice")
-        ? Math.min(10, currentQuestionSet.length)
-        : Math.min(50, currentQuestionSet.length);
+    let count;
+
+    if(mode === "practice"){
+
+        count = Math.min(10, currentQuestionSet.length);
+
+    }else if(mode === "mock"){
+
+        count = Math.min(50, currentQuestionSet.length);
+
+    }else if(mode === "honMock"){
+
+        count = Math.min(100, currentQuestionSet.length);
+
+    }
 
     quizQuestions = [...currentQuestionSet]
         .sort(() => Math.random() - 0.5)
@@ -537,8 +553,8 @@ function showQuestion(){
         " / " + quizQuestions.length;
 
     question.textContent =
-    quizQuestions[currentQuestion].text ||
-    quizQuestions[currentQuestion].question;
+        quizQuestions[currentQuestion].text ||
+        quizQuestions[currentQuestion].question;
 
     result.textContent = "";
 }
@@ -567,15 +583,23 @@ function checkAnswer(userAnswer){
 
         wrongQuestions.push(q);
 
-        if(currentMode === "mock"){
+        if(
+            currentMode === "mock" ||
+            currentMode === "honMock"
+        ){
 
             wrongCount++;
 
-            if(wrongCount >= 6){
+            const limit =
+                currentMode === "honMock"
+                ? 11
+                : 6;
+
+            if(wrongCount >= limit){
 
                 setTimeout(showResult, 500);
-
                 return;
+
             }
         }
     }
@@ -606,10 +630,21 @@ function showResult(){
     const percent =
         Math.round((correctCount / total) * 100);
 
-    const isPass =
-        (currentMode === "mock")
-        ? (correctCount >= MOCK_PASS_SCORE)
-        : (percent >= 90);
+    let isPass;
+
+    if(currentMode === "mock"){
+
+        isPass = correctCount >= 45;
+
+    }else if(currentMode === "honMock"){
+
+        isPass = correctCount >= 90;
+
+    }else{
+
+        isPass = percent >= 90;
+
+    }
 
     progress.textContent = "リザルト";
 
@@ -630,14 +665,14 @@ function showResult(){
 
         wrongQuestions.forEach(q => {
 
-    html +=
-        "<li>" +
-        (q.text || q.question) +
-        "（正解は" +
-        (q.answer ? "〇" : "✕") +
-        "）</li>";
+            html +=
+                "<li style='margin-bottom:20px;'>" +
+                (q.text || q.question) +
+                "<br>（正解は" +
+                (q.answer ? "〇" : "✕") +
+                "）</li>";
 
-});
+        });
 
         html += "</ul>";
     }
