@@ -1,4 +1,4 @@
-const questions = [
+window.questions = [
     {
         text: "シートベルトは交通事故があった場合の被害を大幅に軽減するとともに正しい運転姿勢を保たせることにより、運転中の疲労を軽減するなど、さまざまな効果がある。",
         answer: true
@@ -224,146 +224,387 @@ const questions = [
         answer: false
     },
     {
+        text: "同一方向に車両通行帯がある道路で、黄色い実線で区画されている場合、追い越し以外ははみ出して通行してはならない。",
+        answer: false
+    },
+    {
+        text: "勾配の急な上り坂は、標識や標示で追い越しが禁止されていないとき、遅い車を追い越すことができる。",
+        answer: true
+    },
+    {
+        text: "交差点に入ろうとしているとき、緊急自動車が近づいてきたときは、直ちに交差点で一時停止し、緊急自動車に進路をゆずらなければならない。",
+        answer: false
+    },
+    {
+        text: "オートマチック車を運転する場合、フットブレーキを踏んでおかないと、アクセルペダルを踏まなくても車が動くことがあるがこれをクリープ現象という。",
+        answer: true
+    },
+    {
+        text: "横断歩道や自転車横断帯と、その手前で停止している車があるときは、そのそばを通って前方に出る前に安全確認をして減速しながら通行しなければならない。",
+        answer: false
+    },
+    {
+        text: "右折や左折の合図を行う時期は、その行為をしようとする地点（交差点で右左折する場合はその交差点）から30メートル手前に達した時である。",
+        answer: true
+    },
+    {
+        text: "警察署や消防署などの前に停止禁止部分の標示がされていても、その標示は緊急時のものであるから、緊急時以外であれば標示部分に入って停止してもよい。",
+        answer: false
+    },
+    {
+        text: "横断歩道や自転車横断帯に近づいたとき、歩行者や自転車が横断しているときは、一時停止しなければならないが、歩行者や自転車が横断しようとしているときは徐行すればよい。",
+        answer: false
+    },
+    {
+        text: "右側の道路外の施設へ入る場合（一方通行を除く）、あらかじめ道路の中央に寄り徐行して通行しなければならない。",
+        answer: true
+    },
+    {
+        text: "クリープ現象とは、オートマチック車のチェンジレバーを「D」の位置に入れ、アクセルペダルを軽く踏んだときに走り出す現象をいう。",
+        answer: false
+    },
+    {
+        text: "歩道や路側帯を横切るときは、歩行者の通行を妨げなければ徐行して通行できる。",
+        answer: false
+    },
+    {
+        text: "住宅街の道路で子供が遊んでいて、車が近づくのに気づかないので、警音器を鳴らした。",
+        answer: false
+    },
+    {
+        text: "道路外に出るため、左折しようとするときは、あらかじめ道路の左側に寄るよりも、その直前に寄るほうがよい。",
+        answer: false
+    },
+    {
+        text: "雨にぬれた道路を走る場合や重い荷物を積んでいる場合は、制動距離は短くなる。",
+        answer: false
+    },
+    {
+        text: "道路が渋滞しているときは、路側帯を通行してもよい。",
+        answer: false
+    },
+    {
+        text: "進路の前方に障害物があるときは、あらかじめ一時停止か減速をして、反対方向からの車 に道をゆずらなければならない。",
+        answer: true
+    },
+    {
+        text: "エンジン始動直後やエアコン作動時にオートマチック車を発進させるときは、アクセルペダルを強く踏み込むのがよい。",
+        answer: false
+    },
+    {
+        text: "通学、通園バスがとまっていて、園児などが乗り降りしているときは、その車の側方を通って前方に出るとき十分な安全間隔がとれたが、徐行して安全を確かめながら通行した。",
+        answer: true
+    },
+    {
         text: "標識や標示がない一般道路では、普通貨物自動車の最高速度は時速50キロメートルである。",
         answer: false
+    },
+    {
+        text: "運転者が自動車を停止させるときは、むやみにブレーキを使わず、なるべくアクセルの操作で徐々に速度を落としてから停止するようにするのがよい。",
+        answer: true
+    },
+    {
+        text: "横断歩道のない交差点や、その近くを歩行者が通行しているときは、その通行を妨げてもよい。",
+        answer: false
+    },
+    {
+        text: "幼児を乗せるときは、後部座席に補助装置を用いて乗せるよりも、目のとどく前部座席に直接乗せるのがよい。",
+        answer: false
+    },
+    {
+        text: "補助標識とは、規制理由を示したり、曜日・時間・車種を特定して、規制標識などを補足するものである。",
+        answer: true
+    },
+    {
+        text: "横断歩道や自転車横断帯に近づいたときには、横断する人や自転車がいないことが明らかな場合のほかは、その手前で停止できるように速度を落として進まなければならない。",
+        answer: true
+    },
+    {
+        text: "普通免許で運転できる車の種類は、普通自動車、一般原動機付自転車及び小型特殊自動車の三種類である。",
+        answer: true
+    },
+    {
+        text: "踏切を通過するときは、信号機があれば信号に従って通行することができるが、その場合には徐行して通行しなければならない。",
+        answer: false
+    },
+    {
+        text: "発進するときは、方向指示器などで合図をし、もう一度バックミラーなどで前後左右の安全を確かめるのがよい。",
+        answer: true
+    },
+    {
+        text: "追越しは、進路を変え、加速したうえで再び進路を戻すという複雑な運転操作を必要とする。",
+        answer: true
+    },
+    {
+        text: "道路を通行中の歩行者や自転車のそばを通るときは、安全な間隔をとり徐行しなければならない。",
+        answer: false
+    },
+    {
+        text: "同一方向に三つ以上の車両通行帯があるときは、最も右側の通行帯は追越しなどのためにあけておき、それ以外の車両通行帯を通行することができるが、その場合は、速度が遅い車が左側、速度が速くなるにつれて順次右寄りの通行帯を通行するのがよい。（小型特殊自動車や標識等で指定された自動車を除く）",
+        answer: true
+    },
+    {
+        text: "一方通行道路から右折する場合は、道路の右側部分にはみ出して通行することができる。",
+        answer: true
+    },
+    {
+        text: "交通整理が行われていない交差点で、交差する道路が優先道路であるときや、その道幅が明らかに広いときは、徐行するとともに、交差道路を通行する車や路面電車の通行を妨げてはならない。",
+        answer: true
+    },
+    {
+        text: "交差点を左折しようとするときは、あらかじめできるだけ道路の左端に寄り、交差点の側端に沿って徐行しながら通行しなければならない。",
+        answer: true
+    },
+    {
+        text: "ゆとりのある運転姿勢をとるためには、ハンドルに両手をかけたとき、肘を水平に伸ばしたような状態にシートの背を合わせるのがよい。",
+        answer: false
+    },
+    {
+        text: "交差点付近以外の場所で緊急自動車が近づいてきたときは、道路形態にかかわらず、必ず左側に寄って進路をゆずらなければならない。",
+        answer: false
+    },
+    {
+        text: "前方の停留所に停車している路線バスが乗客の乗り降りのため,なかなか発車しなかったので道路の右側部分の対向車に注意しながらはみ出してその側方を通過した。",
+        answer: true
+    },
+    {
+        text: "交通整理中の警察官が腕を垂直に上げているとき、警察官の身体の正面に対面する交通については、信号機の赤色の灯火と同じである。",
+        answer: true
+    },
+    {
+        text: "オートマチック車を上り坂で駐車するときは、チェンジレバーを「L（又は1）」にしなければならない。",
+        answer: false
+    },
+    {
+        text: "運転免許の区分は、第一種運転免許、第二種運転免許、仮運転免許の三種類に区分されている。",
+        answer: true
+    },
+    {
+        text: "徐行とは車がすぐに停止できるような速度で進行することをいい、優先道路を通行している場合であっても、左右の見通しが効かない交差点では徐行しなければならない。",
+        answer: false
+    },
+    {
+        text: "自動車を運転する前は、有効な自動車検査証と自動車損害賠償責任保険証明書または責任共済証明書を自動車に備えているか確かめる。",
+        answer: true
+    },
+    {
+        text: "歩行者や自転車のそばを通るとき、安全な間隔をあけることができれば徐行する必要はない。",
+        answer: true
+    },
+    {
+        text: "正面の信号が黄色の点滅をしているときは、車や路面電車は交差点を徐行しなければならない。",
+        answer: false
+    },
+    {
+        text: "前方の交通が混雑しているため、交差点内で止まってしまう恐れがある場合には、信号が青であっても交差点内に入ってはならない。",
+        answer: true
+    },
+    {
+        text: "近くに交差点のない一方通行の道路を通行する場合、緊急自動車が近づいてきたときは、道路の左側に寄って進路をゆずるが、車が左側によると、かえって緊急自動車の妨げとなるような時は、道路の右側に寄って進路をゆずる。",
+        answer: true
+    },
+    {
+        text: "自動車に乗ってからドアをしめるときは、途中で止めないで力を入れて一気にしめるのがよい。",
+        answer: false
+    },
+    {
+        text: "停留所で停止中の路面電車があるときに、安全地帯もない場所で人が乗り降りしている場合は、後方で停止し、それらの人がいなくなるまで待たなければならない。",
+        answer: true
+    },
+    {
+        text: "時速60キロメートルで走行している普通自動車の停止距離は路面が乾燥している場合は、約22メートルである。",
+        answer: false
+    },
+    {
+        text: "踏切内では、落輪しないように歩行者や自転車に注意して、やや中央寄りを通過するのがよい。",
+        answer: true
+    },
+    {
+        text: "白や黄のつえを持った人や盲導犬を連れた人、その通行に支障のある高齢者が通行している場合には、その通行を妨げないように一時停止か徐行するのがよい。",
+        answer: true
+    },
+    {
+        text: "道路を通行するときは、決められた交通規則を守ることはもちろん、それ以外にも、道路や交通の状況に応じて、個々に細かい配慮が必要である。",
+        answer: true
+    },
+    {
+        text: "道路の曲がり角付近では、自動車や一般原動機付自転車を追越してはならない。",
+        answer: true
     }
 ];
-
 
 let currentQuestion = 0;
 let correctCount = 0;
 let isAnswered = false;
 
 let quizQuestions = [];
-const QUIZ_COUNT = 10;
+let wrongQuestions = [];
+
+let currentMode = "practice";
+let wrongCount = 0;
+
+const MOCK_PASS_SCORE = 45; // ★これ必須
 
 const menu = document.getElementById("menu");
 const quizArea = document.getElementById("quizArea");
 const startButton = document.getElementById("startButton");
+const mockButton = document.getElementById("mockButton");
+
 const question = document.getElementById("question");
 const result = document.getElementById("result");
 const progress = document.getElementById("progress");
 const maruBtn = document.getElementById("maruBtn");
 const batuBtn = document.getElementById("batuBtn");
 
-startButton.addEventListener("click", startQuiz);
+/* イベント */
+startButton.addEventListener("click", () => startQuiz("practice"));
+mockButton.addEventListener("click", () => startQuiz("mock"));
 
-maruBtn.addEventListener("click", function () {
-    checkAnswer(true);
-});
+maruBtn.addEventListener("click", () => checkAnswer(true));
+batuBtn.addEventListener("click", () => checkAnswer(false));
 
-batuBtn.addEventListener("click", function () {
-    checkAnswer(false);
-});
+/* 開始 */
+function startQuiz(mode){
 
-function startQuiz() {
+    if(!window.questions || questions.length === 0){
+        alert("questions.js が読み込まれていません");
+        return;
+    }
+
+    currentMode = mode;
+
     menu.style.display = "none";
     quizArea.style.display = "block";
 
     currentQuestion = 0;
     correctCount = 0;
+    wrongCount = 0;
+    wrongQuestions = [];
     isAnswered = false;
 
     document.querySelector(".answer-buttons").style.display = "flex";
 
+    const count =
+        (mode === "practice")
+        ? 10
+        : Math.min(50, questions.length);
+
     quizQuestions = [...questions]
         .sort(() => Math.random() - 0.5)
-        .slice(0, QUIZ_COUNT);
+        .slice(0, count);
 
     showQuestion();
 }
 
-function showQuestion() {
+/* 問題表示 */
+function showQuestion(){
+
     isAnswered = false;
 
     progress.textContent =
-        "問題 " + (currentQuestion + 1) + " / " + QUIZ_COUNT;
+        "問題 " + (currentQuestion + 1) + " / " + quizQuestions.length;
 
-    question.textContent =
-        quizQuestions[currentQuestion].text;
+    question.textContent = quizQuestions[currentQuestion].text;
 
     result.textContent = "";
-    result.className = "";
 }
 
-function checkAnswer(userAnswer) {
+/* 回答処理 */
+function checkAnswer(userAnswer){
 
-    if (isAnswered) {
-        return;
-    }
+    if(isAnswered) return;
 
     isAnswered = true;
 
-    if (userAnswer === quizQuestions[currentQuestion].answer) {
+    const q = quizQuestions[currentQuestion];
+
+    if(userAnswer === q.answer){
 
         correctCount++;
-
         result.textContent = "正解";
         result.className = "correct";
 
-    } else {
+    }else{
 
         result.textContent = "不正解";
         result.className = "incorrect";
 
+        wrongQuestions.push(q);
+
+        if(currentMode === "mock"){
+            wrongCount++;
+
+            if(wrongCount >= 6){
+                setTimeout(showResult, 500);
+                return;
+            }
+        }
     }
 
-    setTimeout(function () {
+    setTimeout(() => {
 
         currentQuestion++;
 
-        if (currentQuestion < QUIZ_COUNT) {
+        if(currentQuestion < quizQuestions.length){
             showQuestion();
-        } else {
+        }else{
             showResult();
         }
 
-    }, 1000);
+    }, 800);
 }
 
-function showResult() {
+/* 結果 */
+function showResult(){
 
-    const incorrectCount =
-        Math.max(0, QUIZ_COUNT - correctCount);
+    const total = quizQuestions.length;
+    const percent = Math.round((correctCount / total) * 100);
 
-    const percentage =
-        Math.min(
-            100,
-            Math.round((correctCount / QUIZ_COUNT) * 100)
-        );
-
-    const isPass = percentage >= 90;
+    const isPass =
+        (currentMode === "mock")
+        ? (correctCount >= MOCK_PASS_SCORE)
+        : (percent >= 90);
 
     progress.textContent = "リザルト";
 
-    question.innerHTML =
+    let html =
         "<h2>クイズ終了！</h2>" +
-        "<h1 style='color:" +
-        (isPass ? "red" : "blue") +
-        "'>" +
+        "<h1 style='color:" + (isPass ? "red" : "blue") + "'>" +
         (isPass ? "合格" : "不合格") +
         "</h1>" +
-        "<p>正解数：" + correctCount + "問</p>" +
-        "<p>不正解数：" + incorrectCount + "問</p>" +
-        "<p>正答率：" + percentage + "%</p>" +
-        "<br><br>" +
-        "<button onclick='goHome()'>ホームへ戻る</button>";
+        "<p>正解数：" + correctCount + "</p>" +
+        "<p>不正解数：" + wrongQuestions.length + "</p>" +
+        "<p>正答率：" + percent + "%</p>";
+
+    if(wrongQuestions.length > 0){
+
+        html += "<h3>間違えた問題</h3><ul>";
+
+        wrongQuestions.forEach(q => {
+            html += "<li>" + q.text + "（正解：" + (q.answer ? "〇" : "✕") + "）</li>";
+        });
+
+        html += "</ul>";
+    }
+
+    html += "<br><button onclick='goHome()'>ホームへ戻る</button>";
+
+    question.innerHTML = html;
 
     document.querySelector(".answer-buttons").style.display = "none";
-
-    result.textContent = "";
-    result.className = "";
 }
 
-function goHome() {
+/* ホーム */
+function goHome(){
 
     quizArea.style.display = "none";
     menu.style.display = "block";
 
-    result.textContent = "";
-    result.className = "";
+    currentQuestion = 0;
+    correctCount = 0;
+    wrongCount = 0;
+    wrongQuestions = [];
 
     progress.textContent = "";
-
-    document.querySelector(".answer-buttons").style.display = "flex";
+    result.textContent = "";
 }
