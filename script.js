@@ -509,7 +509,9 @@ function startQuiz(mode){
     currentMode = mode;
 
     menu.style.display = "none";
-    quizArea.style.display = "block";
+document.getElementById("description").style.display = "none";
+document.getElementById("footer").style.display = "none";
+quizArea.style.display = "block";
 
     currentQuestion = 0;
     correctCount = 0;
@@ -699,5 +701,8 @@ function goHome(){
     wrongQuestions = [];
 
     progress.textContent = "";
-    result.textContent = "";
+result.textContent = "";
+
+document.getElementById("description").style.display = "block";
+document.getElementById("footer").style.display = "block";
 }
