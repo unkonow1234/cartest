@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>普通免許学科練習サイト</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <h1>普通免許　学科試験　練習サイト</h1>
+    <h1>普通自動車免許　本免・仮免学科試験　模擬練習サイト</h1>
+
+    <p id="description">
+        本サイトは、普通自動車免許の<strong>仮免許学科試験</strong>および<strong>本免許学科試験</strong>の対策ができる無料の学習サイトです。<br><br>
+
+        <strong>練習モード</strong>では、収録されている問題の中からランダムに10問が出題されます。短時間で学習したい方や、スキマ時間の復習におすすめです。<br><br>
+
+        <strong>模擬試験モード</strong>では、実際の学科試験と同じ合格基準で採点され、不合格が確定した時点で試験が自動的に終了します。本番に近い感覚で学習できます。
+    </p>
 
     <div id="menu">
 
@@ -38,15 +48,11 @@
 
         <div class="answer-buttons">
 
-            <button
-                class="answer-btn maru"
-                id="maruBtn">
+            <button class="answer-btn maru" id="maruBtn">
                 〇
             </button>
 
-            <button
-                class="answer-btn batu"
-                id="batuBtn">
+            <button class="answer-btn batu" id="batuBtn">
                 ✕
             </button>
 
@@ -55,7 +61,8 @@
         <div id="result"></div>
 
     </div>
-<footer>
+
+    <footer id="footer">
 
     <a href="contact.html">お問い合わせ</a>
 
@@ -67,11 +74,16 @@
 
     <a href="privacy.html">プライバシーポリシー</a>
 
+    <span>｜</span>
+
+    <a href="patchnote.html">パッチノート</a>
+
 </footer>
 
-<script src="questions.js"></script>
-<script src="questions2.js"></script>
-<script src="script.js"></script>
+    <script src="questions.js"></script>
+    <script src="questions2.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
