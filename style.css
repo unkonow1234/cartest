@@ -174,3 +174,12 @@ footer a:hover{
     word-break: break-word;
     line-height: 1.8;
 }
+
+#description{
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+    text-align: center;
+}
