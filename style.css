@@ -183,3 +183,26 @@ footer a:hover{
     color: #555;
     text-align: center;
 }
+
+.left-ad{
+    position:fixed;
+    left:20px;
+    top:120px;
+    width:160px;
+    z-index:999;
+}
+
+.right-ad{
+    position:fixed;
+    right:20px;
+    top:120px;
+    width:160px;
+    z-index:999;
+}
+
+@media (max-width:1300px){
+    .left-ad,
+    .right-ad{
+        display:none;
+    }
+}
