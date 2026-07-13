@@ -206,3 +206,36 @@ footer a:hover{
         display:none;
     }
 }
+
+/* スマホ下部広告 */
+.mobile-ad{
+    display:none;
+}
+
+@media screen and (max-width:768px){
+
+    /* PC用左右広告を非表示 */
+    .left-ad,
+    .right-ad{
+        display:none;
+    }
+
+    /* スマホ下部広告を表示 */
+    .mobile-ad{
+        display:block;
+        position:fixed;
+        bottom:0;
+        left:0;
+        width:100%;
+        background:#fff;
+        text-align:center;
+        z-index:9999;
+        padding:5px 0;
+        box-shadow:0 -2px 8px rgba(0,0,0,.15);
+    }
+
+    /* 広告に隠れないよう余白を追加 */
+    body{
+        padding-bottom:90px;
+    }
+}
