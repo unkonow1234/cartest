@@ -499,11 +499,17 @@ batuBtn.addEventListener("click", () => checkAnswer(false));
 
 function startQuiz(mode){
 
+
+    document.body.appendChild(script);
     if(!currentQuestionSet || currentQuestionSet.length === 0){
 
         alert("問題データがありません");
         return;
+ // インタースティシャル広告
+    let script = document.createElement("script");
 
+    script.src =
+    "https://adm.shinobi.jp/s/8aaf5421c29b7a401f00ac2e1ce79b02";
     }
 
     currentMode = mode;
@@ -706,3 +712,5 @@ result.textContent = "";
 document.getElementById("description").style.display = "block";
 document.getElementById("footer").style.display = "block";
 }
+
+
