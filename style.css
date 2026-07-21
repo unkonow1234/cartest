@@ -239,3 +239,18 @@ footer a:hover{
         padding-bottom:90px;
     }
 }
+
+.layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.side-ad {
+    width: 160px;
+}
+
+.page-box {
+    max-width: 800px;
+}
