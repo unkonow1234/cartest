@@ -500,24 +500,34 @@ batuBtn.addEventListener("click", () => checkAnswer(false));
 function startQuiz(mode){
 
 
-    document.body.appendChild(script);
     if(!currentQuestionSet || currentQuestionSet.length === 0){
 
         alert("問題データがありません");
         return;
- // インタースティシャル広告
+
+    }
+
+
+    // インタースティシャル広告
     let script = document.createElement("script");
 
     script.src =
     "https://adm.shinobi.jp/s/8aaf5421c29b7a401f00ac2e1ce79b02";
-    }
+
+    document.body.appendChild(script);
+
+
 
     currentMode = mode;
 
     menu.style.display = "none";
-document.getElementById("description").style.display = "none";
-document.getElementById("footer").style.display = "none";
-quizArea.style.display = "block";
+
+    document.getElementById("description").style.display = "none";
+
+    document.getElementById("footer").style.display = "none";
+
+    quizArea.style.display = "block";
+
 
     currentQuestion = 0;
     correctCount = 0;
@@ -525,9 +535,12 @@ quizArea.style.display = "block";
     wrongQuestions = [];
     isAnswered = false;
 
+
     document.querySelector(".answer-buttons").style.display = "flex";
 
+
     let count;
+
 
     if(mode === "practice"){
 
@@ -543,11 +556,14 @@ quizArea.style.display = "block";
 
     }
 
+
     quizQuestions = [...currentQuestionSet]
         .sort(() => Math.random() - 0.5)
         .slice(0, count);
 
+
     showQuestion();
+
 }
 
 /* 問題表示 */
