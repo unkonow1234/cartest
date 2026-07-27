@@ -263,3 +263,27 @@ footer a:hover{
     }
 
 }
+
+.left-ads,
+.right-ads{
+    position:fixed;
+    top:100px;
+    display:flex;
+    flex-direction:row;   /* ← 横並び */
+    gap:20px;
+    z-index:999;
+}
+
+.left-ads{
+    left:20px;
+}
+
+.right-ads{
+    right:20px;
+}
+
+.ad{
+    width:160px;
+    height:600px;
+    flex-shrink:0;
+}
