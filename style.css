@@ -270,3 +270,32 @@ footer a:hover{
     margin:40px 0;
     text-align:center;
 }
+.left-ads,
+.right-ads{
+    position:fixed;
+    top:80px;
+    display:flex;
+    gap:20px;
+    z-index:1000;
+}
+
+.left-ads{
+    left:20px;
+}
+
+.right-ads{
+    right:20px;
+}
+
+.ad{
+    width:160px;
+    height:600px;
+}
+
+/* 画面幅が足りない場合は非表示 */
+@media (max-width: 1900px){
+    .left-ads,
+    .right-ads{
+        display:none;
+    }
+}
