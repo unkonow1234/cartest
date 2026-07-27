@@ -508,11 +508,12 @@ function startQuiz(mode){
     }
 
 
-    const script = document.createElement("script");
+    // インタースティシャル広告
+const script = document.createElement("script");
 
 script.src = window.innerWidth <= 768
-    ? "https://adm.shinobi.jp/s/c5f3598168fc653c64a5a8cda0361302" // スマホ用
-    : "https://adm.shinobi.jp/s/b0014ddd4ab5f4bbe6be4fd845e1afe7"; // PC用
+    ? "https://adm.shinobi.jp/s/385b168992f9faafedcb3e6cc560c605" // スマホ用
+    : "https://adm.shinobi.jp/s/0972c9f89822318e9ff3da67c9a4b6ce"; // PC用
 
 document.body.appendChild(script);
 
