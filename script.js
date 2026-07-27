@@ -508,13 +508,13 @@ function startQuiz(mode){
     }
 
 
-    // インタースティシャル広告
-    let script = document.createElement("script");
+    const script = document.createElement("script");
 
-    script.src =
-    "https://adm.shinobi.jp/s/8aaf5421c29b7a401f00ac2e1ce79b02";
+script.src = window.innerWidth <= 768
+    ? "https://adm.shinobi.jp/s/c5f3598168fc653c64a5a8cda0361302" // スマホ用
+    : "https://adm.shinobi.jp/s/b0014ddd4ab5f4bbe6be4fd845e1afe7"; // PC用
 
-    document.body.appendChild(script);
+document.body.appendChild(script);
 
 
 
